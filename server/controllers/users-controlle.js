@@ -9,9 +9,34 @@ function loginGET(req, res){
 
 
 function loginPOST(req, res){
-    console.log('Vlaaa login POST');
-    res.write(req);
-    //res.sendfile(viewsPath + 'login.html');
+   let reqUser = req.body;
+
+   User.findOne({username: reqUser.username}).then((user)=>{
+       if(!user){
+            res.send("Invalid Username Or Password");
+            return;
+       }
+
+       if(!user.authenticate(reqUser.password)){
+            res.send("Invalid Username Or Password");
+            return;
+        }   
+
+        req.logIn(user,( err,user)=>{
+            if(err){
+                res.sendfile(viewsPath + 'login.html');
+                return;
+            }
+            else{
+                res.redirect('/')
+            }
+        })
+
+   }).catch((err)=>{
+       console.log('Login post faild!');
+       console.log(err);
+       return;
+   });
 }
 
 function registerGET(req, res){
