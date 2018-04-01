@@ -7,42 +7,40 @@ function loginGET(req, res){
     res.sendfile(viewsPath + 'login.html');
 }
 
-
 function loginPOST(req, res){
-   let reqUser = req.body;
+    let reqUser = req.body;
 
-   User.findOne({username: reqUser.username}).then((user)=>{
-       if(!user){
-            res.send("Invalid Username Or Password");
-            return;
-       }
-
-       if(!user.authenticate(reqUser.password)){
-            res.send("Invalid Username Or Password");
-            return;
-        }   
-
-        req.logIn(user,( err,user)=>{
-            if(err){
-                res.sendfile(viewsPath + 'login.html');
-                return;
-            }
-            else{
-                res.redirect('/')
-            }
-        })
-
-   }).catch((err)=>{
-       console.log('Login post faild!');
-       console.log(err);
-       return;
-   });
+    User.findOne({username: reqUser.username}).then((user)=>{
+        if(!user){
+             res.send("Invalid Username Or Password");
+             return;
+        }
+ 
+        if(!user.authenticate(reqUser.password)){
+             res.send("Invalid Username Or Password");
+             return;
+         }   
+ 
+         req.logIn(user,( err,user)=>{
+             if(err){
+                 res.sendfile(viewsPath + 'login.html');
+                 return;
+             }
+             else{
+                 res.redirect('/')
+             }
+         })
+ 
+    }).catch((err)=>{
+        console.log('Login post faild!');
+        console.log(err);
+        return;
+    });
 }
 
 function registerGET(req, res){
     res.sendfile(viewsPath + 'register.html');
 }
-
 
 function registerPOST(req, res){
     console.log(req.body);

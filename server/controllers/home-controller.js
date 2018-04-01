@@ -9,9 +9,9 @@ module.exports = {
         console.log('req user homepage: -->');
 
         if(req.user){
-            console.log(req.user);    
+            console.log(req.user.username + ' is logged');    
         }else{
-            console.log('Nqma go, kupe se !');
+            console.log('session is empty');
         }
 
         

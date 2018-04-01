@@ -1,6 +1,4 @@
 const controllers = require('../controllers/index');
-//0884410832
-// 
 
 
 module.exports = function(app){

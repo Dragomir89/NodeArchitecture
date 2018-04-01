@@ -4,12 +4,12 @@ const User = require('../data/User');
 mongoose.Promise = global.Promise;
 
 module.exports = function(settings){
-
     mongoose.connect(settings.db);
 
     let db = mongoose.connection;
 
     db.once('open', (err)=>{
+        console.log('DB is open')
         if(err){
             console.log('DB Connection Error !')
             console.log(err);
