@@ -7,7 +7,6 @@ let app = express();
 
 require('./server/config/express')(app);
 require('./server/config/routes')(app);
-//console.log(require('./server/config/passport'));
 require('./server/config/database')(settings);
 require('./server/config/passport')();
 

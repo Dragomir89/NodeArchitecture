@@ -66,5 +66,5 @@ module.exports = {
     loginPOST   :loginPOST,
     registerGET :registerGET,
     registerPOST:registerPOST,
-    logout: logout
+    logout      :logout
 }
