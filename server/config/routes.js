@@ -17,7 +17,8 @@ module.exports = function(app){
 
 
     app.all('*', (req,res)=>{
-        console.log('4  0  4')
+        console.log('4  0  4');
+        console.log(req.header);
         res.status(404);
         res.send('404 Not Found :(');
         res.end();
