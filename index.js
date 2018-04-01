@@ -6,10 +6,15 @@ let app = express();
 
 
 require('./server/config/express')(app);
-require('./server/config/routes')(app);
+//require('./server/config/routes')(app);
 require('./server/config/database')(settings);
 require('./server/config/passport')();
 
+app.get('/', (req, res)=>{
+
+    res.send(env);
+
+});
 
 
 app.listen(settings.port);
